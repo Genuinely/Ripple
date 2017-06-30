@@ -1,2 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.4.0_5d53fd2939490e9b5eae679f742f637f8a7c8642/classes.dex" />
+    </item>
+    <item
+        jar="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.4.0_3900632de9fbea1562f44698a457e65380b92be4/classes.dex" />
+    </item>
+    <item
+        jar="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.4.0_3e97efc57fe6a68312dff37b85afde3e2fa4b731/classes.dex" />
+    </item>
+    <item
+        jar="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="8a38b928a7b6669177645388761b7f931b4b0118">
+        <dex dex="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_6ea05c53f2bb06641df55a9356f8d97aa32316f4/classes.dex" />
+    </item>
+    <item
+        jar="/Users/neilyeung/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_3ab9cc3e61bfb3905abce45d56513525f33b220b/classes.dex" />
+    </item>
+    <item
+        jar="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_750169dc21ff2ef52e7d0e5e5ba7266ae19648f9/classes.dex" />
+    </item>
+    <item
+        jar="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="6300844b8aea766a1a8876198e7dec646d8aba9c">
+        <dex dex="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_27ed41fd3a20445dbfe596a8307a6b670057b1a6/classes.dex" />
+    </item>
+    <item
+        jar="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/Users/neilyeung/Documents/Code/Android/Ripple/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.4.0_93c9b07f3b205c6d633887c611883fc4530d360c/classes.dex" />
+    </item>
+
+</items>
