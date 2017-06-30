@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewTime;
     AudioManager am;
     final android.os.Handler myHandler = new android.os.Handler();
-    int i = 0;
+    private TextView tvMinute, tvSecond;
+    int i = 60;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,33 +60,33 @@ public class MainActivity extends AppCompatActivity {
 
  //       final CounterClass timer = new CounterClass(600000, 1000);
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (am.isStopped()) {
-                    am.start();
-                    btnStart.setText("PAUSE");
-                    timer.start();
-                }
-            
-                else if (am.isPaused()) {
-                    am.resume();
-                    btnStart.setText("PAUSE");
-                    timer.notifyAll();
-                }
-
-                else if (am.isPlaying()) {
-                    am.pause();
-                    btnStart.setText("START");
-                    try {
-                        synchronized (timer) {
-                            timer.wait();
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+//        btnStart.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                if (am.isStopped()) {
+//                    am.start();
+//                    btnStart.setText("PAUSE");
+//                    timer.start();
+//                }
+//
+//                else if (am.isPaused()) {
+//                    am.resume();
+//                    btnStart.setText("PAUSE");
+//                    timer.notifyAll();
+//                }
+//
+//                else if (am.isPlaying()) {
+//                    am.pause();
+//                    btnStart.setText("START");
+//                    try {
+//                        synchronized (timer) {
+//                            timer.wait();
+//                        }
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        });
 
 
         timer.schedule(new TimerTask() {
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         void UpdateGUI() {
-            i++;
+            i--;
             myHandler.post(new Runnable() {
                 @Override
                 public void run() {
