@@ -4,7 +4,7 @@ package genuinely.ripple;
 
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
-//import android.os.CountDownTimer;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,21 +12,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
-//import java.util.concurrent.TimeUnit;
-//import java.util.logging.Handler;
+import java.util.concurrent.TimeUnit;
 
-
-//make pickup backpack
 public class MainActivity extends AppCompatActivity {
 
     Button btnStart, btnStop;
+
     TextView textViewTime;
     AudioManager am;
     final android.os.Handler myHandler = new android.os.Handler();
-    private TextView tvMinute, tvSecond;
-    int i = 60;
+    long remainingTime = 600000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +34,16 @@ public class MainActivity extends AppCompatActivity {
         final MediaPlayer mp = new MediaPlayer();
 
 
-        try{
+        try {
             mp.reset();
             AssetFileDescriptor afd;
             afd = getAssets().openFd("Meditation.mp3");
-            mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+            mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
             mp.prepare();
 
         } catch (IllegalStateException e) {
             e.printStackTrace();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -56,102 +51,73 @@ public class MainActivity extends AppCompatActivity {
 
         textViewTime.setText("00:10:00");
 
-        final Timer timer = new Timer();
+        class CounterClass extends CountDownTimer {
 
- //       final CounterClass timer = new CounterClass(600000, 1000);
+            long millis;
 
-//        btnStart.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                if (am.isStopped()) {
-//                    am.start();
-//                    btnStart.setText("PAUSE");
-//                    timer.start();
-//                }
-//
-//                else if (am.isPaused()) {
-//                    am.resume();
-//                    btnStart.setText("PAUSE");
-//                    timer.notifyAll();
-//                }
-//
-//                else if (am.isPlaying()) {
-//                    am.pause();
-//                    btnStart.setText("START");
-//                    try {
-//                        synchronized (timer) {
-//                            timer.wait();
-//                        }
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
+            public CounterClass(long millisInFuture, long countdownInterval) {
+                super(millisInFuture, countdownInterval);
+            }
 
+            public long getMillis() {
+                return millis;
+            }
 
-        timer.schedule(new TimerTask() {
+            public void onTick(long millisUntilFinished) {
+
+                millis = millisUntilFinished;
+                final String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
+                        TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.
+                                toHours(millis)),
+                        TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.
+                                toMinutes(millis)));
+
+                myHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        textViewTime.setText(hms);
+                    }
+                });
+            }
+
             @Override
-            public void run() {
-                UpdateGUI();}
-            }, 0, 1000);
+            public void onFinish() {
+                myHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        textViewTime.setText("Completed.");
+                    }
+                });
+            }
+
+
         }
 
-        void UpdateGUI() {
-            i--;
-            myHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    textViewTime.setText(String.valueOf(i));
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            CounterClass timer = null;
+
+            public void onClick(View view) {
+                if (am.isStopped()) {
+                    am.start();
+                    btnStart.setText("PAUSE");
+                    timer = new CounterClass(remainingTime, 1000);
+                    timer.start();
+
+                } else if (am.isPaused()) {
+                    am.resume();
+                    btnStart.setText("PAUSE");
+                    timer = new CounterClass(remainingTime, 1000);
+                    timer.start();
+
+                } else if (am.isPlaying()) {
+                    am.pause();
+                    btnStart.setText("START");
+                    if (timer != null) {
+                        timer.cancel();
+                        remainingTime = timer.getMillis();
+                    }
                 }
-            });
-         }
-
-
-
-
-
-
-//        btnStop.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                timer.cancel();
-//                textViewTime.setText("00:10:00");
-//
-//                if(am.isPlaying()){
-//                    am.stop();
-//                }
-//            }
-//        }
-//    }
-////
-//    public class CounterClass extends CountDownTimer {
-//
-//        public CounterClass(long millisInFuture, long countdownInterval) {
-//                super(millisInFuture, countdownInterval);
-//        }
-//
-//        @Override
-//        public void onTick(long millisUntilFinished) {
-//
-//            long millis = millisUntilFinished;
-//            String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
-//                    TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.
-//                            toHours(millis)),
-//                    TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.
-//                            toMinutes(millis)));
-//
-//            System.out.println(hms);
-//            textViewTime.setText(hms);
-//        }
-//
-//        @Override
-//        public void onFinish() {
-//            textViewTime.setText("Completed.");
-//        }
-//    }
-//
-//    private void UpdateGUI() {
-//        myHandler.post(WorkerTimer);
-//    }
-
+            }
+        });
+    }
 }
