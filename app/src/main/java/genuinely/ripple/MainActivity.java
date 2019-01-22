@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             AssetFileDescriptor afd;
             afd = getAssets().openFd("Meditation.mp3");
             mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-            mp.prepare();
+            mp.prepareAsync();
 
         } catch (IllegalStateException e) {
             e.printStackTrace();
