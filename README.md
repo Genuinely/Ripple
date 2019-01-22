@@ -40,7 +40,7 @@ myHandler.post(() -> { textViewTime.setText(hms); });
 
 ### (3) Handling Asynchronous Calls
 
-The last thing I want to mention is about making asynchronous calls when some requests takes too long.  Some operations, such as getting the `MediaPlayer` prepared or finishing up the playback, are lengthy.  In the following state diagram of `MediaPlayer`, the calls to these lengthy operations are asynchronous, marked as double-arrows.
+The last thing I want to mention is about making asynchronous calls when some requests takes too long.  Some operations, such as getting the `MediaPlayer` prepared or finishing up the playback, are lengthy.  In the following state diagram of `MediaPlayer`, the calls to these lengthy operations are asynchronous, shown as double-arrows.
 
 <img src="https://stuff.mit.edu/afs/sipb/project/android/docs/images/mediaplayer_state_diagram.gif">
 
