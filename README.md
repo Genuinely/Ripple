@@ -1,4 +1,4 @@
-# Ripple
+# Ripple Meditation
 
 Ripple is a **meditation** app that I worked on, with my fellow high schoolers in mind.  My motivation is to let highschoolers use Ripple to meditate for a few minutes everyday and become more mindful. Mindfulness meditation not only helps relieve stress but also helps ease depression and anxiety.  
 
